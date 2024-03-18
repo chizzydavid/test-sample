@@ -33,9 +33,11 @@ const unRepliedMessageHandler = async ({ body, ack, client, logger }) => {
     const msgWithLinks = final.map((msg) => {
       const msgLink = `${WORKSPACE_URL}archives/${channel_id}/p${msg.ts.replace('.', "")}`;
       msg.msgLink = msgLink
+      msg.timestamp = new Date(parseInt(msg.ts.split('.')[0]) * 1000)
       return msg
     });
 
+    msgWithLinks.sort((a, b) => b.timestamp - a.timestamp);
     const sendMessgReq = await client.chat.postMessage({
       channel: user_id,
       text: "Unreplied Messages",

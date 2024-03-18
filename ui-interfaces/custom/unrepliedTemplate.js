@@ -5,8 +5,7 @@ module.exports = ({ unRepliedMssgs, channelName }) => {
   unRepliedMssgs.forEach((msg) => {
     let preview = msg.text.slice(0, 30)
     preview = msg.text.length > 30 ? preview += ".." : preview
-    const timestamp = new Date(parseInt(msg.ts.split('.')[0]) * 1000)
-    const when = timestamp.toString().substring(4, 15)
+    const when = msg.timestamp.toString().substring(4, 15)
 
     msgSections.push({
       "type": "section",
