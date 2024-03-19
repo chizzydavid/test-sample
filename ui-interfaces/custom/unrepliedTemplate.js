@@ -22,7 +22,7 @@ module.exports = ({ unRepliedMssgs, channelName }) => {
           "elements": [
             {
               "type": "text",
-              "text": `\n`
+              "text": `\n\n`
             },             
             {
               "type": "text",
