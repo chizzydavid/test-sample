@@ -22,11 +22,11 @@ module.exports = ({ unRepliedMssgs, channelName }) => {
           "elements": [
             {
               "type": "text",
-              "text": `\n\n`
+              "text": `\n`
             },             
             {
               "type": "text",
-              "text": `Preview:  ${preview}\nWhen: ${when}\n`
+              "text": `\nPreview:  ${preview}\nWhen: ${when}\n`
             },            
             {
               "type": "link",
