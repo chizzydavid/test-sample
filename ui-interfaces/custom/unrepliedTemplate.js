@@ -7,20 +7,27 @@ module.exports = ({ unRepliedMssgs, channelName }) => {
     preview = msg.text.length > 30 ? preview += ".." : preview
     const when = msg.timestamp.toString().substring(4, 15)
 
-    msgSections.push({
-      "type": "section",
-      "text": {
-        "type": "mrkdwn",
-        "text": `*Preview:* ${preview}\n*When:* ${when}\n`
-      }
-    })
-
+    // msgSections.push({
+    //   "type": "section",
+    //   "text": {
+    //     "type": "mrkdwn",
+    //     "text": `*Preview:* ${preview}\n*When:* ${when}\n`
+    //   }
+    // })
     msgSections.push({
       "type": "rich_text",
       "elements": [
         {
           "type": "rich_text_section",
           "elements": [
+            {
+              "type": "text",
+              "text": `\n`
+            },             
+            {
+              "type": "text",
+              "text": `Preview:  ${preview}\nWhen: ${when}\n`
+            },            
             {
               "type": "link",
               "url": `${msg.msgLink}`,
@@ -48,3 +55,53 @@ module.exports = ({ unRepliedMssgs, channelName }) => {
   return body
 }
 
+
+
+// blocks: [
+   
+//   {
+//     "type": "rich_text",
+//     "elements": [
+//       {
+//         "type": "rich_text_section",
+//         "elements": [
+//           {
+//             "type": "text",
+//             "text": "Your Unread Messages "
+//           },
+//           {
+//             "type": "emoji",
+//             "name": "mailbox"
+//           },
+//           {
+//             "type": "text",
+//             "text": ".\n"
+//           },                
+//         ]
+//       },
+//       {
+//         "type": "rich_text_list",
+//         "style": "bullet",
+//         "elements": msgLinks.map((link, idx) => (
+//           {
+//             "type": "rich_text_section",
+//             "elements": [
+//               {
+//                 "type": "text",
+//                 "text": `Item ${idx + 1}: `
+//               },
+//               {
+//                 "type": "link",
+//                 "url": `${link}`,
+//                 "text": "View more",
+//                 "style": {
+//                   "bold": true
+//                 }
+//               }
+//             ]
+//           }
+//         ))
+//       }
+//     ]
+//   }        
+// ]
